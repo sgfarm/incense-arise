@@ -1,0 +1,17 @@
+# fly.toml app configuration file generated for incense-arise on 2024-04-24T17:13:22+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'incense-arise'
+primary_region = 'ewr'
+kill_signal = 'SIGINT'
+kill_timeout = '5s'
+
+[http_service]
+  internal_port = 3000
+
+[[vm]]
+  size = 'shared-cpu-2x'
+  memory = '1GB'
+  processes = ['app']
