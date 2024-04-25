@@ -10,7 +10,14 @@ update: download sync write-list
 
 # downloads YT videos from playlist `YT_PLAYLIST_URL` into `./video_cache/`
 download:
-    -yt-dlp --no-progress --no-simulate -P "./video_cache" -o "%(title)s.%(ext)s" --restrict-filenames --embed-subs --sub-langs "en.*" "{{ YT_PLAYLIST_URL }}"
+    -yt-dlp --no-simulate \
+        -f "bv+ba/b" \
+        -P "./video_cache" \
+        -o "%(title)s.%(ext)s" \
+        --restrict-filenames \
+        --remux-video "mov>mp4/mkv" \
+        --embed-subs --sub-langs "en.*" \
+        "{{ YT_PLAYLIST_URL }}"
 
 # syncs S3 bucket with `./video_cache/`
 sync:
