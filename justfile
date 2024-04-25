@@ -11,11 +11,12 @@ update: download sync write-list
 # downloads YT videos from playlist `YT_PLAYLIST_URL` into `./video_cache/`
 download:
     -yt-dlp --no-simulate \
-        -f "bv+ba/b" \
+        -f "bv[height<=720]+ba/b" \
         -P "./video_cache" \
         -o "%(title)s.%(ext)s" \
         --restrict-filenames \
-        --remux-video "mov>mp4/mkv" \
+        --remux-video "mkv" \
+        --audio-quality 256K \
         --embed-subs --sub-langs "en.*" \
         "{{ YT_PLAYLIST_URL }}"
 
