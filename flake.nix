@@ -32,7 +32,7 @@
       in {
         devShells.default = pkgs.mkShell {
           nativeBuildInputs = with pkgs; [
-            just yt-dlp awscli vlc flyctl
+            just yt-dlp awscli flyctl
           ];
         };
         packages = {
