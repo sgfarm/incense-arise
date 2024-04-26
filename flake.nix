@@ -25,7 +25,7 @@
             Cmd = [
               "${pkgs.vlc}/bin/cvlc" "${playlist}" "-v" "--loop" "--random"
               "--sout-all" "--sout-keep" "--sout"
-              "#transcode{vcodec=h264,acodec=mp4a,ab=256,channels=2,samplerate=44100}:http{mux=ts,dst=:3000/}"
+              "#transcode{vcodec=h264,vb=800,acodec=mp4a,ab=256,channels=2,samplerate=44100}:rtp{access=http,mux=ts,dst=localhost,port=3000}"
             ];
           };
         };
